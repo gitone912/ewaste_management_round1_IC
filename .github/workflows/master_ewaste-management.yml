@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'ewaste-management'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F2FFC637650940AE9C3EA5A1CB4A6148 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0FE3166DA32D4766BB4AFFDA193E142B }}
