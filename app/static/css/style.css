@@ -113,7 +113,7 @@
 }
 
 .hero-header {
-    background: url(.../img/cable-car-50988.jpg) top right no-repeat;
+    background: url("https://i.ibb.co/9HbJjNx/cable-car-50988.jpg") top right no-repeat;
     background-size: cover;
 }
 
@@ -281,7 +281,7 @@
 }
 
 .bg-offer {
-    background: url(.../img/home.jpg) top right no-repeat;
+    background: url(https://i.ibb.co/Kq1fzNJ/down2.jpg) top right no-repeat;
     background-size: cover;
 }
 
@@ -386,7 +386,7 @@
 }
 
 .bg-testimonial {
-    background: url(.../img/down2.jpg) top left no-repeat;
+    background: url(https://i.ibb.co/Kq1fzNJ/down2.jpg) top left no-repeat;
     background-size: cover;
 }
 
