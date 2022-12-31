@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+{% block body %}
+<div class="col-md-4">
+    <div class="form-group">
+    <label>Gender</label>
+    <form action="" method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-info btn-fill pull-right">
+</form>
+<br>
+
+<h3><a href="{% url 'cvmap' %}"  >proceed to maps</a></h3>
+  </div>  
+</div>
+<br>
+<h4>
+  note: our project is still on development phase
+</h4>
+<h4>
+  this section will be automated with real IoT device cameras and locations will be sent and verified through our ML model automatically
+</h4>
+<h4>
+  but as of now you can use manual coordinates e.g lat= 23.8103, long= 90.4125
+  so enter digits only in the latitude and longitude fields
+  enter the coordinates and image one by one and the procees to map to see the coordinates and route optimization
+</h4>
+<h4>
+  for image section upload a image and if there will be garbage or litter in the image then its coordinate will be sent to database and map else it wont
+</h4>
+{% endblock body %}
