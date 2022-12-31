@@ -126,7 +126,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-CSRF_TRUSTED_ORIGINS = ['https://ewaste.azurewebsites.net/']
+CSRF_TRUSTED_ORIGINS = ['https://ewastemanagement.azurewebsites.net/']
 # Add these new lines
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
