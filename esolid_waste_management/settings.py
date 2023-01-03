@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     
 ]
 
@@ -126,10 +127,11 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-CSRF_TRUSTED_ORIGINS = ['https://ewastemanagement.azurewebsites.net/']
+CSRF_TRUSTED_ORIGINS = ['https://*.ewastemanagement.azurewebsites.net/']
 # Add these new lines
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
