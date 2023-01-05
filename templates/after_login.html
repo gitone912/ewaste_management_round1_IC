@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+    <h3>explore </h3>
+    <a href="{% url 'camera_vision' %}" class="nav-item nav-link">CameraVision</a>
+            <a href="{% url 'new_bins' %}" class="nav-item nav-link">Bins</a>
+            <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
+{% else %}
+    <p>Welcome, new user. Please log in.</p>
+    <a href="{% url 'register' %}" class="nav-item nav-link">Register</a>
+{% endif %}
+
+
+{% endblock body %}

@@ -45,10 +45,10 @@ def Login(request):
     if user is not None:
         login(request, user)
         messages.success(request, "Successfully Logged In")
-        return redirect("/")
+        return render(request ,'after_login.html')
     else:
         messages.error(request, "Invalid Credentials")
-    return render(request, 'home.html')
+    return render(request ,'after_login.html')
 
 
 def Logout(request):
