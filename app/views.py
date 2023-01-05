@@ -78,20 +78,24 @@ def map(request):  # sourcery skip: dict-comprehension, for-index-replacement, m
 
 
 def new_bins(request):
+    data = bin_status.objects.all()
     if request.method == "POST":
         fm = map_status(request.POST)
+        
         if fm.is_valid():
             reg = bin_status(lat=fm.cleaned_data['lat'],lng=fm.cleaned_data['lng'],status=fm.cleaned_data['status'])
             reg.save()
-            return HttpResponseRedirect("/new_bin/")
+            #return HttpResponseRedirect("/new_bin/")
+            return render(request ,'new_bins.html',{'form': fm,'data':data})
     else:
         fm = map_status()
-    return render(request ,'new_bins.html',{'form': fm})
+    return render(request ,'new_bins.html',{'form': fm,'data':data})
+    
 def new_mapping(request):
     return render(request, 'new_mapping.html')
 
 def camera_v(request):  # sourcery skip: extract-method
-    posts = camera_vision.objects.all()
+    data = camera_vision.objects.all()
     if request.method == "POST":
         fm = camera(request.POST , request.FILES)
         if fm.is_valid():
@@ -99,10 +103,11 @@ def camera_v(request):  # sourcery skip: extract-method
             if locimage == 1:
                 reg=camera_vision(loc_lat=fm.cleaned_data['loc_lat'],loc_lng=fm.cleaned_data['loc_lng'],locimage=fm.cleaned_data['locimage'])
                 reg.save()
-            return HttpResponseRedirect("/camera_vision/")
+            #return HttpResponseRedirect("/camera_vision/")
+            return render(request, "camera_v.html", {'form':fm,'data':data})
     else:
         fm = camera()
-    return render(request, "camera_v.html", {'form':fm})
+    return render(request, "camera_v.html", {'form':fm,'data':data})
 
 def cvmap(request):  # sourcery skip: dict-comprehension, for-index-replacement, move-assign-in-block, remove-zero-from-range
     lat_values = {}
@@ -120,3 +125,40 @@ def cvmap(request):  # sourcery skip: dict-comprehension, for-index-replacement,
     overall = np.array(list(zip(resultList1, resultList2)))
     data = json.dumps(overall.tolist())
     return render(request, 'map.html', {'data': data})
+
+def update_data(request,pk):#bin
+    order = bin_status.objects.get(id=pk)
+    form = map_status(instance=order)
+    if request.method == "POST":
+        fm = map_status(request.POST,instance=order)
+        if fm.is_valid():
+            fm.save()
+            return redirect("new_bins")
+            #return render(request ,'new_bins.html',{'form': fm,'data':data})
+    return render(request, 'update.html', {'form': form})
+    
+def delete_data(request,pk):#bin
+    order = bin_status.objects.get(id=pk)
+    if request.method == "POST":
+        order.delete()
+        return redirect("new_bins")
+    return render(request, 'delete.html', {'data': order})
+
+#cv
+def update_cvdata(request,pk):
+    order = camera_vision.objects.get(id=pk)
+    form = camera(instance=order)
+    if request.method == "POST":
+        fm = camera(request.POST,instance=order)
+        if fm.is_valid():
+            fm.save()
+            return redirect("camera_vision")
+            #return render(request ,'new_bins.html',{'form': fm,'data':data})
+    return render(request, 'update.html', {'form': form})
+    
+def delete_cvdata(request,pk):
+    order = camera_vision.objects.get(id=pk)
+    if request.method == "POST":
+        order.delete()
+        return redirect("camera_vision")
+    return render(request, 'deletecv.html', {'data': order})

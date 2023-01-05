@@ -1,0 +1,12 @@
+{% extends 'home.html' %} {% block body %}
+<div class="col-md-4">
+    <div class="form-group">
+    <label></label>
+    <p class="font-weight-bold">are u sure u wanna delete {{data}}</p>
+    <form action="{%url 'delete_data' data.id %}" method="POST" id="bin_form">
+        {% csrf_token %}
+        <a href="{% url 'home' %}" class="btn btn-danger ">no</a>
+        <input type="submit" value="yes" class="btn btn-info btn-fill pull-right">
+  </form>
+  <br>
+  {% endblock body%}

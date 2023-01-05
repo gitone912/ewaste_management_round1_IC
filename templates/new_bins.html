@@ -1,28 +1,64 @@
-{% extends 'home.html' %}
-{% block body %}
-<div class="col-md-4">
-    <div class="form-group">
-    <label>Gender</label>
-    <form action="" method="POST">
-        {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" class="btn btn-info btn-fill pull-right">
-</form>
-<br>
-
-
-<h3><a href="{% url 'map' %}"  >proceed to maps</a></h3>
-  </div>  
+{% extends 'home.html' %} {% block body %}
+<div class="row">
+  {% for x in data.all %}
+  <div
+    class="col-md-3"
+    class="span12"
+    style="border: 2px solid rgb(129, 122, 122)"
+  >
+    <div class="thumbnail">
+      <img
+        src="https://i.ibb.co/Kq1fzNJ/down2.jpg"
+        alt="Lights"
+        style="width: 90%"
+      />
+      <div class="caption">
+        <p class="font-weight-bold">longitude : {{x.lng}}</p>
+        <hr />
+        <p class="font-weight-bold">latitude : {{x.lat}}</p>
+        <hr />
+        <p class="font-weight-bold">filled(yes/no) : {{x.status}}</p>
+        <hr />
+        <a href="{% url 'update' x.id %}" class="btn btn-primary "
+          >update</a
+        >
+        <a
+          href="{% url 'delete_data' x.id %}"
+          class="btn btn-danger "
+          >delete</a
+        >
+        <p></p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 </div>
-<h4>
-  note: our project is still on development phase
-</h4>
-<h4>
-  this section will be automated with real IoT device cameras and locations will be sent and verified through our ML model automatically
-</h4>
-<h4>
+<br />
+<h4><a href="{% url 'map' %}" class="btn btn-info">proceed to maps</a></h4>
+
+<div class="col-md-4">
+  <div class="form-group">
+    <label>Fill out the data
+    </label>
+    <form action="" method="POST" id="bin_form">
+      {% csrf_token %} {{ form.as_p }}
+      <input
+        type="submit"
+        value="Submit"
+        class="btn btn-info btn-fill pull-right"
+      />
+    </form>
+  </div>
+</div>
+<h5>note: our project is still on development phase</h5>
+<h5>
+  this section will be automated with real IoT device cameras and locations will
+  be sent and verified through our ML model automatically
+</h5>
+<h5>
   but as of now you can use manual coordinates e.g lat= 23.8103, long= 90.4125
-  so enter digits only in the latitude and longitude fields , enter the coordinates one by one and then proceed to maps
-</h4>
+  so enter digits only in the latitude and longitude fields , enter the
+  coordinates one by one and then proceed to maps
+</h5>
 
 {% endblock body %}
