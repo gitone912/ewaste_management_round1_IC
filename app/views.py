@@ -32,11 +32,11 @@ def Register(request):
     user.first_name = first_name
     user.last_name = last_name
     user.save()
-    return render(request, 'login.html')
+    return render(request, 'frontpage.html')
 
 def Login(request):
     if request.method != "POST":
-        return render(request, "login.html")
+        return render(request, "frontpage.html")
     username = request.POST['username']
     password = request.POST['password']
 
@@ -162,3 +162,6 @@ def delete_cvdata(request,pk):
         order.delete()
         return redirect("camera_vision")
     return render(request, 'deletecv.html', {'data': order})
+
+def front_page(request):
+    return render(request, 'frontpage.html')
