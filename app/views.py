@@ -9,6 +9,7 @@ import numpy as np
 from .models import *
 from .forms import *
 from .prediction import cpy
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 def home(request):
@@ -164,4 +165,6 @@ def delete_cvdata(request,pk):
     return render(request, 'deletecv.html', {'data': order})
 
 def front_page(request):
-    return render(request, 'frontpage.html')
+    User = get_user_model()
+    users = User.objects.all()
+    return render(request, 'user_details.html',{'users':users,'range': range(10)})
