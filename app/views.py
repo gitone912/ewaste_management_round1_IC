@@ -164,7 +164,7 @@ def delete_cvdata(request,pk):
         return redirect("camera_vision")
     return render(request, 'deletecv.html', {'data': order})
 
-def front_page(request):
+def user_det(request):
     User = get_user_model()
     users = User.objects.all()
-    return render(request, 'user_details.html',{'users':users,'range': range(10)})
+    return render(request, 'user_details.html',{'users':users})
