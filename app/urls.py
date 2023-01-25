@@ -17,5 +17,6 @@ urlpatterns = [
     path("delete_data/<str:pk>/", views.delete_data, name="delete_data"),
     path("delete_cvdata/<str:pk>/", views.delete_cvdata, name="delete_cvdata"),
     path("update_cvdata/<str:pk>/", views.update_cvdata, name="update_cvdata"),
-    path("user_details/", views.user_det, name="user_det")
+    path("user_details/", views.user_det, name="user_det"),
+    path("filldetails/", views.ultrasonic, name="ultrasonic")
 ]

@@ -168,3 +168,7 @@ def user_det(request):
     User = get_user_model()
     users = User.objects.all()
     return render(request, 'user_details.html',{'users':users})
+
+def ultrasonic(request):
+    
+    return render(request, 'ultrasonic.html')

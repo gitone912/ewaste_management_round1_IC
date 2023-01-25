@@ -10,16 +10,17 @@ class map_status(forms.ModelForm):
         model = bin_status
         fields = ['lng','lat','status']
         widgets = {
-            'lng': TextInput(attrs={
+             'lng': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
-                'placeholder': 'enter longitude'
+                'placeholder': 'Enter Latitude'
                 }),
             'lat': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
-                'placeholder': 'enter latitude'
-                })
+                'placeholder': 'Enter Longitude'
+                }),
+           
         }
         
 class camera(forms.ModelForm):
@@ -32,11 +33,11 @@ class camera(forms.ModelForm):
             'loc_lng': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
-                'placeholder': 'enter longitude'
+                'placeholder': 'Enter Latitude'
                 }),
             'loc_lat': TextInput(attrs={
                 'class': "form-control", 
                 'style': 'max-width: 300px;',
-                'placeholder': 'enter latitude'
+                'placeholder': 'Enter Longitude'
                 })
         }
