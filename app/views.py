@@ -1,6 +1,8 @@
 import json
+import pathlib
+import cv2
 from django.shortcuts import render
-from django.contrib.auth  import authenticate,  login, logout 
+from django.contrib.auth  import authenticate,  login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -10,7 +12,9 @@ from .models import *
 from .forms import *
 from .prediction import cpy
 from django.contrib.auth import get_user_model
-
+from django.views import View
+import sys
+from PIL import Image
 # Create your views here.
 def home(request):
     return render(request, 'body.html')
@@ -169,6 +173,19 @@ def user_det(request):
     users = User.objects.all()
     return render(request, 'user_details.html',{'users':users})
 
-def ultrasonic(request):
-    
-    return render(request, 'ultrasonic.html')
+
+def distance(request):
+    obj = arduino.objects.all()
+    sys.stdout = sys.__stdout__
+    data = pathlib.Path('app/arduino/new.txt').read_text()
+    data = int(data)
+    percent = (data/100)*100
+    if request.method == "POST":
+        fm = arduino_status(request.POST)
+        if fm.is_valid():
+            reg=arduino(distance=data,check_filled=fm.cleaned_data['check_filled'],fill_img=percent)
+            reg.save()
+            return render(request, "ultrasonic.html", {'form':fm,'obj':obj})
+    else:
+        fm = arduino_status()
+    return render(request, "ultrasonic.html", {'form':fm,'obj':obj})

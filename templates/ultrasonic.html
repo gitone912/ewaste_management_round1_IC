@@ -1,0 +1,87 @@
+<style>
+  @property --p{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+
+.pie {
+  --p:20;      /* the percentage */
+  --b:22px;    /* the thickness */
+  --c:darkred; /* the color */
+  --w:150px;   /* the size*/
+  
+  width:var(--w);
+  aspect-ratio:1/1;
+  position:relative;
+  display:inline-grid;
+  margin:5px;
+  place-content:center;
+  font-size:25px;
+  font-weight:bold;
+  font-family:sans-serif;
+}
+.pie:before,
+.pie:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+.pie:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+.pie:after {
+  inset:calc(50% - var(--b)/2);
+  background:var(--c);
+  transform:rotate(calc(var(--p)*3.6deg - 90deg)) translate(calc(var(--w)/2 - 50%));
+}
+.animate {
+  animation:p 1s .5s both;
+}
+.no-round:before {
+  background-size:0 0,auto;
+}
+.no-round:after {
+  content:none;
+}
+@keyframes p{
+  from{--p:0;}
+}
+
+body {
+  background:#ddd;
+}
+</style>
+
+{% for o in obj %}
+{{o.check_filled}} and 
+{{o.distance}}
+
+{% comment %} <div class="pie" style="--p:20"> 20%</div>
+<div class="pie" style="--p:40;--c:darkblue;--b:10px"> 40%</div>
+<div class="pie no-round" style="--p:60;--c:purple;--b:15px"> 60%</div> {% endcomment %}
+<div class="pie animate" style="--p:{{o.fill_img}};--c:orange;">{{o.fill_img}}%</div>
+{% comment %} <div class="pie animate no-round" style="--p:90;--c:lightgreen"> 90%</div> {% endcomment %}
+
+
+<br>
+{% endfor %}
+<div class="col-md-4">
+    <div class="form-group">
+      <label>Fill out the data
+      </label>
+      <form action="" method="POST" id="bin_form">
+        {% csrf_token %} {{ form.as_p }}
+        <input
+          type="submit"
+          value="Submit"
+          class="btn btn-info btn-fill pull-right"
+        />
+      </form>
+    </div>
+  </div>

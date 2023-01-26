@@ -1,4 +1,4 @@
 from pymata4 import pymata4
-
-board=pymata4.Pymata4()
-board.shutdown()
+def shutd():
+    board=pymata4.Pymata4()
+    return board.shutdown()

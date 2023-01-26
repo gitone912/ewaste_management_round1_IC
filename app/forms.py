@@ -41,3 +41,11 @@ class camera(forms.ModelForm):
                 'placeholder': 'Enter Longitude'
                 })
         }
+
+class arduino_status(forms.ModelForm):
+    def __init__(self, *args, **kargs):
+        super(arduino_status, self).__init__(*args, **kargs)
+    class Meta:
+        model = arduino
+        fields = ['check_filled']
+        
