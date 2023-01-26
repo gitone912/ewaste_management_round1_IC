@@ -253,6 +253,7 @@ body{
 
                         <h5 class="mb-0">Coordinates: {{o.check_filled}}</h5>
                         <h5 class="mb-0">{{o.distance}}cm left to fill</h5>
+                        <a href="{% url 'update_filldata' o.id %}" class="btn btn-primary ">update</a>
                       </div>
                     </div>
                   </div>

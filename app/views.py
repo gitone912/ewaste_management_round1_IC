@@ -189,3 +189,20 @@ def distance(request):
     else:
         fm = arduino_status()
     return render(request, "ultrasonic.html", {'form':fm,'obj':obj})
+
+def fill_update(request,pk):#bin  # sourcery skip: extract-method, move-assign
+    order = arduino.objects.get(id=pk)
+    form = arduino_status(instance=order)
+    data = pathlib.Path('app/arduino/new.txt').read_text()
+    data = int(data)
+    percent = (data/100)*100
+    if request.method == "POST":
+        fm = arduino_status(request.POST,instance=order)
+        if fm.is_valid():
+            obj=fm.save(commit=False)
+            obj.distance=data
+            obj.fill_img=percent
+            obj.save()
+            return redirect("ultrasonic")
+            #return render(request ,'new_bins.html',{'form': fm,'data':data})
+    return render(request, 'update.html', {'form': form})

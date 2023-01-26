@@ -18,5 +18,6 @@ urlpatterns = [
     path("delete_cvdata/<str:pk>/", views.delete_cvdata, name="delete_cvdata"),
     path("update_cvdata/<str:pk>/", views.update_cvdata, name="update_cvdata"),
     path("user_details/", views.user_det, name="user_det"),
-    path("filldetails/", views.distance, name="ultrasonic")
+    path("filldetails/", views.distance, name="ultrasonic"),
+    path("update_filldata/<str:pk>/", views.fill_update, name="update_filldata"),
 ]
