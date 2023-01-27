@@ -24,6 +24,6 @@ check=(
     ('n', 'no')
 )
 class arduino(models.Model):
-    check_filled = models.ForeignKey(bin_status, on_delete=models.CASCADE, blank=True, null=True,verbose_name="check_filled")
+    check_filled = models.ForeignKey(bin_status, on_delete=models.CASCADE, blank=True, null=True,verbose_name="check_filled",unique=True)
     distance = models.IntegerField(blank=True, null=True, default=0,verbose_name="distance")
     fill_img = models.IntegerField(blank=True, null=True, default=0,verbose_name="fill_img")
