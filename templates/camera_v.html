@@ -9,9 +9,11 @@
     <div class="thumbnail">
       <img src="{{x.locimage.url}}" alt="Lights" style="width: 90%" />
       <div class="caption">
-        <p class="font-weight-bold">Longitude : {{x.loc_lng}}</p>
+        <p class="font-weight-bold">name : {{x.location_name}}</p>
         <hr />
-        <p class="font-weight-bold">Latitude : {{x.loc_lat}}</p>
+        <p class="font-weight-bold">Latitude : {{x.loc_lng}}</p>
+        <hr />
+        <p class="font-weight-bold">Longitude : {{x.loc_lat}}</p>
         <hr />
         <a href="{% url 'update_cvdata' x.id %}" class="btn btn-primary "
           >update</a
@@ -41,13 +43,4 @@
   </div>
 </div>
 <br />
-<h5>note: our project is still on development phase</h5>
-<h5>
-  this section will be automated with real IoT device cameras and locations will
-  be sent and verified through our ML model automatically
-</h5>
-<h5>
-  but as of now we are manual coordinates e.g lat= 23.8103, long= 90.4125
-  by entering the latitude and longitude fields enter the coordinates and image one by one and the procees to map to see the coordinates and route optimization (image classification will classify image on basis of there is garbage or not if yes then coordinates will be sent and if no then data will be automatically delted)
-</h5>
 {% endblock body %}

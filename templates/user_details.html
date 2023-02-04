@@ -191,7 +191,7 @@ body{
               <tr>
                 <th>Candidate Name</th>
                 <th class="text-center">Status</th>
-                <th class="action text-right">Action</th>
+                <th class="action text-right">Assigned Area</th>
               </tr>
             </thead>
             <tbody>
@@ -205,29 +205,25 @@ body{
                   <div class="candidate-list-details">
                     <div class="candidate-list-info">
                       <div class="candidate-list-title">
-                        <h5 class="mb-0"><a href="#">{{u.username}}</a></h5>
-                        <h5 class="mb-0">name: {{u.first_name}}{{u.last_name}}</h5>
+                        <h5 class="mb-0"><a href="#">{{u.user_name}}</a></h5>
+                        <h5 class="mb-0">name: {{u.full_name}}</h5>
                         <h5 class="mb-0">email: {{u.email}}</h5>
                       </div>
                       
                       <div class="candidate-list-option">
                         <ul class="list-unstyled">
-                          <li><i class="fas fa-filter pr-1"></i>Full Address</li>
-                          <li><i class="fas fa-map-marker-alt pr-1"></i>Area of working</li>
+      
+                          <li><i class="fas fa-map-marker-alt pr-1"></i>{{u.address}} </li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </td>
                 <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">{% if u.is_staff %}Admin{% else %}driver{% endif %}</span>
+                  <span class="candidate-list-time order-1">{{u.status}}</span>
                 </td>
-                <td>
-                  <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                    <li><a href="#" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
-                    <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                    <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                  </ul>
+                <td class="candidate-list-favourite-time text-center">
+                    <span class="candidate-list-time order-1">{{u.area_assigned}}</span>
                 </td>
               </tr>
               {% endfor %}

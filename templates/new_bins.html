@@ -8,11 +8,13 @@
   >
     <div class="thumbnail">
       <img
-        src="https://i.ibb.co/Kq1fzNJ/down2.jpg"
+        src="{{x.image.url}}"
         alt="Lights"
         style="width: 90%"
       />
       <div class="caption">
+        <p class="font-weight-bold">name : {{x.location_name}}</p>
+        <hr />
         <p class="font-weight-bold">Latitude : {{x.lng}}</p>
         <hr />
         <p class="font-weight-bold">Longitude : {{x.lat}}</p>
@@ -42,22 +44,15 @@
     </label>
     <form action="" method="POST" id="bin_form">
       {% csrf_token %} {{ form.as_p }}
+    
       <input
         type="submit"
         value="Submit"
         class="btn btn-info btn-fill pull-right"
       />
     </form>
+    
   </div>
 </div>
-<h5>note: our project is still on development phase</h5>
-<h5>
-  this section will be automated with real IoT device cameras and locations coordinates will
-  be sent and verified through our ML model automatically
-</h5>
-<h5>
-  but as of now we are using manual coordinates e.g lat= 23.8103, long= 90.4125
-  : by entering coordinates and status of bins we can plot those coordinates on the map
-</h5>
 
 {% endblock body %}

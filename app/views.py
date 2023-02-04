@@ -50,7 +50,7 @@ def Login(request):
     if user is not None:
         login(request, user)
         messages.success(request, "Successfully Logged In")
-        return render(request ,'after_login.html')
+        return redirect('/')
     else:
         messages.error(request, "Invalid Credentials")
     return render(request ,'after_login.html')
@@ -66,7 +66,6 @@ def map(request):  # sourcery skip: dict-comprehension, for-index-replacement, m
     lat_values = {}
     lng_values = {}
     l1=camera_vision.objects.all().values()
-    print(l1)
     locations = bin_status.objects.filter(status="y").values()
     values=list(locations)
     for i in range(len(values)):
@@ -96,8 +95,9 @@ def new_bins(request):
         fm = map_status()
     return render(request ,'new_bins.html',{'form': fm,'data':data})
     
-def new_mapping(request):
-    return render(request, 'new_mapping.html')
+def mapping(request):
+    form = cameraform()
+    return render(request, 'mapping.html',{'form':form})
 
 def camera_v(request):  # sourcery skip: extract-method
     data = camera_vision.objects.all()
@@ -169,8 +169,7 @@ def delete_cvdata(request,pk):
     return render(request, 'deletecv.html', {'data': order})
 
 def user_det(request):
-    User = get_user_model()
-    users = User.objects.all()
+    users = u_details.objects.all()
     return render(request, 'user_details.html',{'users':users})
 
 

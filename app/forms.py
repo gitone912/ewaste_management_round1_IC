@@ -1,15 +1,21 @@
 from django import forms
 from django.forms import TextInput
 from .models import *
-
+from fractions import Fraction
+from camera_imagefield import CameraImageField
 
 class map_status(forms.ModelForm):
     def __init__(self, *args, **kargs):
         super(map_status, self).__init__(*args, **kargs)
     class Meta:
         model = bin_status
-        fields = ['lng','lat','status']
+        fields = ['location_name','lng','lat','image','status']
         widgets = {
+            'location_name': TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 300px;',
+                'placeholder': 'Enter the location name'
+                }),
              'lng': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
@@ -28,8 +34,13 @@ class camera(forms.ModelForm):
         super(camera, self).__init__(*args, **kargs)
     class Meta:
         model = camera_vision
-        fields = ['loc_lng','loc_lat','locimage']
+        fields = ['location_name','loc_lng','loc_lat','locimage']
         widgets = {
+            'location_name': TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 300px;',
+                'placeholder': 'Enter the location name'
+                }),
             'loc_lng': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
@@ -49,3 +60,5 @@ class arduino_status(forms.ModelForm):
         model = arduino
         fields = ['check_filled']
         
+class cameraform(forms.Form):
+    landscape = CameraImageField(aspect_ratio=Fraction(16, 9))

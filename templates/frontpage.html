@@ -669,9 +669,9 @@ button {
     <div class="container" id="container">
         <div class="form-container  sign-up-container">
             <form action="/login/" method="POST"> {% csrf_token %}
-                <div class="header">Staff's Login</div>
+                <div class="header">Admin's Login</div>
                 <span class="under__social">
-                    <a href="#" class="link signin-link">enter your username of staff
+                    <a href="#" class="link signin-link">enter your username of Admin
                     </a>
                 </span>
 
@@ -702,9 +702,9 @@ button {
 
         <div class="form-container  sign-in-container" id="sign__in">
             <form action="/login/" method="POST"> {% csrf_token %}
-                <div class="header">Admin's Login</div>
+                <div class="header">User's Login</div>
                 <span class="under__social">
-                    <a href="#" class="link signup-link">enter your username of admin</a>
+                    <a href="#" class="link signup-link">enter your username of User</a>
                 </span>
 
                 <div class="button-input-group">
@@ -735,22 +735,25 @@ button {
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Welcome to ewastemanagement portal !!</h1>
-                    <p>Please enter your credentials of staff</p>
-                    <p>---------------------------------------</p>
+                    <h1>Welcome to wastemanagement portal !!</h1>
+                    <p>Please enter your credentials of Admin</p>
+                    <p>--------------------------------------</p>
                     <div class="group button-group">
-                        <p>not an admin? then !</p>
-                        <button class="ghost" id="signIn">login as admin</button>
+                        
+                        <p>not an admin?</p>
+                        <p>click down below to - </p>
+                        <button class="ghost" id="signIn">login as User</button>
                     </div>
                 </div>
 
                 <div class="overlay-panel overlay-right">
-                    <h1>Welcome to ewastemanagement portal !!</h1>
-                    <p>Please enter your credentials of Admin</p>
-                    <p>---------------------------------------</p>
+                    <h1>Welcome to wastemanagement portal !!</h1>
+                    <p>Please enter your credentials of User</p>
+                    <p>--------------------------------------</p>
                     <div class="group button-group">
-                        <p>not an admin? then !</p>
-                        <button class="ghost" id="signUp">login as staff</button>
+                        <p>not an User?</p>
+                        <p>click down below to - </p>
+                        <button class="ghost" id="signUp">login as Admin</button>
                     </div>
                 </div>
             </div>

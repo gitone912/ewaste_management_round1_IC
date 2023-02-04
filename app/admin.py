@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(bin_status)
 admin.site.register(camera_vision)
 admin.site.register(arduino)
+admin.site.register(u_details)
