@@ -95,8 +95,7 @@ def new_bins(request):
     return render(request ,'new_bins.html',{'form': fm,'data':data})
     
 def subscription(request):
-    form = cameraform()
-    return render(request, 'subscription.html',{'form':form})
+    return render(request, 'subscription.html')
 
 def camera_v(request):  # sourcery skip: extract-method
     data = camera_vision.objects.all()

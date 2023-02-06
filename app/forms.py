@@ -2,7 +2,6 @@ from django import forms
 from django.forms import TextInput
 from .models import *
 from fractions import Fraction
-from camera_imagefield import CameraImageField
 
 class map_status(forms.ModelForm):
     def __init__(self, *args, **kargs):
@@ -60,5 +59,3 @@ class arduino_status(forms.ModelForm):
         model = arduino
         fields = ['check_filled']
         
-class cameraform(forms.Form):
-    landscape = CameraImageField(aspect_ratio=Fraction(16, 9))
