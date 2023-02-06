@@ -95,9 +95,9 @@ def new_bins(request):
         fm = map_status()
     return render(request ,'new_bins.html',{'form': fm,'data':data})
     
-def mapping(request):
+def subscription(request):
     form = cameraform()
-    return render(request, 'mapping.html',{'form':form})
+    return render(request, 'subscription.html',{'form':form})
 
 def camera_v(request):  # sourcery skip: extract-method
     data = camera_vision.objects.all()

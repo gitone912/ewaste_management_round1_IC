@@ -1,0 +1,202 @@
+{% extends 'home.html' %}
+{% block title %}Pricing Table {% endblock %}
+{% block css %}
+
+    .card1:hover {
+      background:#00ffb6;
+      border:1px solid #00ffb6;
+    }
+
+    .card1:hover .list-group-item{
+      background:#00ffb6 !important
+    }
+
+    .card2:hover {
+      background:#00C9FF;
+      border:1px solid #00C9FF;
+    }
+
+    .card2:hover .list-group-item{
+      background:#00C9FF !important
+    }
+
+
+    .card3:hover {
+      background:#ff95e9;
+      border:1px solid #ff95e9;
+    }
+
+    .card3:hover .list-group-item{
+      background:#ff95e9 !important
+    }
+
+
+    .card:hover .btn-outline-dark{
+      color:white;
+      background:#212529;
+    }
+
+    {% endblock %}
+    {% block body %}
+
+
+  <div class="container-fluid">
+    <br>
+    
+    <h3 class="text-center">Our Subscription Model</h3>
+    <div class="container p-5">
+      <div class="row">
+          <h4 class="text-center">Plans for Government and Private Hospitals&Indusstries</h4>
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="card card1 h-100">
+            <div class="card-body">
+             
+              <h5 class="card-title">Basic</h5>
+              <small class='text-muted'>One year</small>
+              <br><br>
+              <span class="h2">₹1500</span>per bin
+              <br><br>
+              <div class="d-grid my-3">
+                <button class="btn btn-outline-dark btn-block">Select</button>
+              </div>
+              <ul>
+                <li>Hardware Installation in all bin</li>
+                <li>Software service</li>
+                <li>daily collection</li>
+                
+              </ul>
+            </div>
+
+            
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="card card2 h-100">
+            <div class="card-body">
+             
+              <h5 class="card-title">Standard</h5>
+              <small class='text-muted'>3years</small>
+              <br><br>
+              <span class="h2">₹1200</span>per bin
+              <br><br>
+              <div class="d-grid my-3">
+                <button class="btn btn-outline-dark btn-block">Select</button>
+              </div>
+              <ul>
+                <li>Hardware Installation in all bin</li>
+                <li>Software service</li>
+                <li>daily collection</li>
+                
+              </ul>
+            </div>
+
+            
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="card card3 h-100">
+            <div class="card-body">
+             
+              <h5 class="card-title">Premium</h5>
+              <small class='text-muted'>5 years</small>
+              <br><br>
+              <span class="h2">₹1000</span>per bin
+              <br><br>
+              <div class="d-grid my-3">
+                <button class="btn btn-outline-dark btn-block">Select</button>
+              </div>
+              <ul>
+                <li>Hardware Installation in all bin</li>
+                <li>Software service</li>
+                <li>daily collection</li>
+                
+              </ul>
+            </div>
+
+            
+          </div>
+        </div>
+      </div>   
+
+<!-- business -->
+      <div class="row">
+        <h4 class="text-center">Plans for Users</h4>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card card1 h-100">
+          <div class="card-body">
+           
+            <h5 class="card-title">Basic</h5>
+            <small class='text-muted'>One House</small>
+            <br><br>
+            <span class="h2">₹300</span>/month  &nbsp;&nbsp;&nbsp;&nbsp; <span class="h2">₹3000</span>/year
+            <br><br>
+            <div class="d-grid my-3">
+              <button class="btn btn-outline-dark btn-block">Select</button>
+            </div>
+            <ul>
+              <li>Garbage collection at doorstep</li>
+              <li>Tracking facility</li>
+              <li>can call 2 times a day</li>
+              
+            </ul>
+          </div>
+
+          
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card card2 h-100">
+          <div class="card-body">
+           
+            <h5 class="card-title">Standard</h5>
+            <small class='text-muted'>5 houses</small>
+            <br><br>
+            <span class="h2">₹600</span>/month  &nbsp;&nbsp;&nbsp;&nbsp; <span class="h2">₹6000</span>/year
+            <br><br>
+            <div class="d-grid my-3">
+              <button class="btn btn-outline-dark btn-block">Select</button>
+            </div>
+            <ul>
+              <li>Garbage collection at doorstep</li>
+              <li>Tracking facility</li>
+              <li>can call 2 times a day</li>
+              
+            </ul>
+          </div>
+
+          
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card card3 h-100">
+          <div class="card-body">
+           
+            <h5 class="card-title">Premium</h5>
+            <small class='text-muted'>Large Company</small>
+            <br><br>
+            <span class="h2">₹300</span>/month  &nbsp;&nbsp;&nbsp;&nbsp; <span class="h2">₹3000</span>/year
+            <br><br>
+            <div class="d-grid my-3">
+              <button class="btn btn-outline-dark btn-block">Select</button>
+            </div>
+            <ul>
+              <li>Garbage collection at doorstep</li>
+              <li>Tracking facility</li>
+              <li>can call 2 times a day</li>
+              
+            </ul>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+ 
+
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  {% endblock %}

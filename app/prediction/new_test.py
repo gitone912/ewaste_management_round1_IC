@@ -5,10 +5,10 @@ import os
 dirname = os.path.dirname(__file__)
 images_folder = os.path.join(dirname, 'images')
 # Create variables for your project
-publish_iteration_name = "Iteration1_imaginecup"
-project_id = "e9aac1ab-a015-47ee-908b-be478112e6f4"
+publish_iteration_name = "Iteration1"
+project_id = "9e7820ba-5b71-4b2c-b5b7-aba3feeca08b"
 # Create variables for your prediction resource
-prediction_key = "f0afaf5cbcf84ffe9c8e48eb3cbd9552"
+prediction_key = "421309d49a0b4b2a90560b008ad1ece4"
 endpoint = "https://centralindia.api.cognitive.microsoft.com/"
 prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
 predictor = CustomVisionPredictionClient(endpoint, prediction_credentials)
