@@ -20,4 +20,5 @@ urlpatterns = [
     path("user_details/", views.user_det, name="user_det"),
     path("filldetails/", views.distance, name="ultrasonic"),
     path("update_filldata/<str:pk>/", views.fill_update, name="update_filldata"),
+    path("tracking/", views.m, name="tracking"),
 ]

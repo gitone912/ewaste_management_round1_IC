@@ -205,3 +205,6 @@ def fill_update(request,pk):#bin  # sourcery skip: extract-method, move-assign
             return redirect("ultrasonic")
             #return render(request ,'new_bins.html',{'form': fm,'data':data})
     return render(request, 'update.html', {'form': form})
+
+def m(request):
+    return render(request, 'user.html')
