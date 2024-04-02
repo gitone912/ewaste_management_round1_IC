@@ -5,8 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Object Detection</title>
 <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
     #output {
         position: relative;
+        width: 100%;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    #detect {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #predictionResult {
+        text-align: center;
     }
 
     .bounding-box {
@@ -18,16 +53,18 @@
 </head>
 <body>
 <h1>Object Detection</h1>
-<video id="video" width="640" height="480" autoplay></video>
-<button id="detect">Detect</button>
-<h5 id="predictionResult"></h5> <!-- New h5 tag for prediction result -->
+<div id="output">
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="detect">Detect</button>
+    <h5 id="predictionResult"></h5>
+</div> <!-- New h5 tag for prediction result -->
 
 <script>
     const video = document.getElementById('video');
     const detectButton = document.getElementById('detect');
     const predictionResult = document.getElementById('predictionResult'); // Reference to h5 tag
 
-    const modelURL = 'https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/697f508c-5326-4bdc-a6b2-ef7223ada2ce/classify/iterations/Iteration1/image';
+    const modelURL = 'https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/697f508c-5326-4bdc-a6b2-ef7223ada2ce/classify/iterations/Iteration2/image';
     
     // Initialize video stream
     navigator.mediaDevices.getUserMedia({ video: true })

@@ -1,39 +1,32 @@
 import sys
-import asyncio
-import sys
-from pymata_express.pymata_express import PymataExpress
+import time
+from pymata4 import pymata4
 
-# This program continuously monitors an HC-SR04 Ultrasonic Sensor
-class SonarMonitor():
-    def __init__(self):
-        self.new_data=0
-    
-    async def the_callback(self,data):
-        #print("Distance in cm: ", data[2])
-        self.new_data=int(data[2])
-        with open('app/arduino/new.txt', 'w') as filename:
-            sys.stdout = filename
-            print(self.new_data)
-        
+DISTANCE_CM = 2
+TRIGGER_PIN = 9
+ECHO_PIN = 10
 
-    async def sonar(self,my_board, trigger_pin, echo_pin, callback):
+def the_callback(data):
+    distance = data[DISTANCE_CM]
+    print(f'Distance in cm: {distance}')
+    # Write the latest distance to a file
+    with open("new.txt", "w") as file:
+        file.write(f'{distance}')
 
-        # set the pin mode for the trigger and echo pins
-        await my_board.set_pin_mode_sonar(9, 10,callback)
-        # wait forever
-        while True:
-            try:
-                await asyncio.sleep(3)
-            except KeyboardInterrupt:
-                await my_board.shutdown()
+def sonar(my_board, trigger_pin, echo_pin, callback):
+    my_board.set_pin_mode_sonar(trigger_pin, echo_pin, callback)
+    while True:
+        try:
+            time.sleep(.01)
+            print(f'data read: {my_board.sonar_read(TRIGGER_PIN)} cm')
+        except KeyboardInterrupt:
+            my_board.shutdown()
+            sys.exit(0)
 
-s= SonarMonitor()
-loop = asyncio.get_event_loop()
-board = PymataExpress()
+board = pymata4.Pymata4()
 try:
-    loop.run_until_complete(s.sonar(board, 9, 10, s.the_callback))
-    loop.run_until_complete(board.shutdown())
+    sonar(board, TRIGGER_PIN, ECHO_PIN, the_callback)
+    board.shutdown()
 except (KeyboardInterrupt, RuntimeError):
-    loop.run_until_complete(board.shutdown())
+    board.shutdown()
     sys.exit(0)
-

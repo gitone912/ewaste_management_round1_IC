@@ -14,6 +14,8 @@ from django.contrib.auth import get_user_model
 from django.views import View
 import sys
 from PIL import Image
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 def home(request):
     return render(request, 'body.html')
@@ -38,6 +40,7 @@ def Register(request):
     user.save()
     return render(request, 'frontpage.html')
 
+@csrf_exempt
 def Login(request):
     if request.method != "POST":
         return render(request, "frontpage.html")
@@ -210,7 +213,7 @@ def m(request):
 def camera_test(request):
     return render(request, 'camera_test.html')
 
-
+@csrf_exempt
 def upload_camera_v(request):  
     if request.method == 'POST':
         location_name = request.POST.get('name')
@@ -228,5 +231,5 @@ def upload_camera_v(request):
                 locimage=locimage
             )
             return redirect('camera_vision')
-        return HttpResponse("not a waste")
+        return render(request,'not_a_waste.html')
     return render(request, 'upload_camera_v.html')
