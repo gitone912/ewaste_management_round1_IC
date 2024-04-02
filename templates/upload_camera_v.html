@@ -1,0 +1,75 @@
+{% extends 'home.html' %} 
+{% block body %}
+<br />
+<h4><a href="{% url 'cvmap' %}" class="btn btn-info">Proceed to maps</a></h4>
+<div class="col-md-4">
+  <div class="form-group">
+    <label>Fill out the data</label>
+    <form action="" method="POST" enctype="multipart/form-data" id="locationForm">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+      </div>
+      <input type="hidden" name="latitude" id="latitude">
+      <input type="hidden" name="longitude" id="longitude">
+      <button type="button" class="btn btn-info" onclick="getLocation()">Get Location</button>
+      <br />
+      <br />
+      <input type="submit" value="Submit" class="btn btn-info btn-fill pull-right"/>
+    </form>
+    <br />
+    <div id="coordinates">
+      Latitude: <span id="latitudeDisplay"></span><br>
+      Longitude: <span id="longitudeDisplay"></span>
+    </div>
+  </div>
+</div>
+<br />
+
+<script>
+  // Function to get user's location and fill the latitude and longitude fields
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(fillCoordinates, handleError);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  // Callback function to fill latitude and longitude fields
+  function fillCoordinates(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    document.getElementById("latitude").value = latitude;
+    document.getElementById("longitude").value = longitude;
+    document.getElementById("latitudeDisplay").innerText = latitude;
+    document.getElementById("longitudeDisplay").innerText = longitude;
+    console.log("Latitude:", latitude);
+    console.log("Longitude:", longitude);
+  }
+
+  // Error handler function
+  function handleError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        alert("User denied the request for Geolocation.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        alert("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        alert("An unknown error occurred.");
+        break;
+    }
+  }
+</script>
+
+{% endblock body %}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Object Detection</title>
+<style>
+    #output {
+        position: relative;
+    }
+
+    .bounding-box {
+        position: absolute;
+        border: 2px solid red;
+        box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+<h1>Object Detection</h1>
+<video id="video" width="640" height="480" autoplay></video>
+<button id="detect">Detect</button>
+<h5 id="predictionResult"></h5> <!-- New h5 tag for prediction result -->
+
+<script>
+    const video = document.getElementById('video');
+    const detectButton = document.getElementById('detect');
+    const predictionResult = document.getElementById('predictionResult'); // Reference to h5 tag
+
+    const modelURL = 'https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/697f508c-5326-4bdc-a6b2-ef7223ada2ce/classify/iterations/Iteration1/image';
+    
+    // Initialize video stream
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+        video.srcObject = stream;
+        video.play();
+    })
+    .catch(function(err) {
+        console.log("An error occurred: " + err);
+    });
+
+    // Perform object detection on button click
+    detectButton.addEventListener('click', function() {
+        captureAndDetect();
+    });
+
+    // Function to capture image from video stream and perform detection
+    function captureAndDetect() {
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const imageURL = canvas.toDataURL('image/jpeg');
+
+        // Assuming you use an AJAX library like fetch or XMLHttpRequest
+        fetch(modelURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/octet-stream',
+                'Prediction-Key': 'c772308225124734a5cd99a24d10d3dc' // Replace with your prediction key
+            },
+            body: dataURItoBlob(imageURL)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Printing the result
+            console.log(`result : ${data.predictions[0].tagName} ${data.predictions[0].probability * 100}%`);
+
+            // Display prediction result in the h5 tag
+            predictionResult.textContent = `Prediction: ${data.predictions[0].tagName} (${(data.predictions[0].probability * 100).toFixed(2)}%)`;
+
+            // Returning 1 if the predicted tag name is "Waste", otherwise returning 0
+            const result = data.predictions[0].tagName === "Waste" ? 1 : 0;
+
+            
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Function to convert data URI to Blob
+    function dataURItoBlob(dataURI) {
+        const byteString = atob(dataURI.split(',')[1]);
+        const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        const ab = new ArrayBuffer(byteString.length);
+        const ia = new Uint8Array(ab);
+        for (let i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        const blob = new Blob([ab], { type: mimeString });
+        return blob;
+    }
+</script>
+</body>
+</html>

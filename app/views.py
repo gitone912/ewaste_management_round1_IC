@@ -206,3 +206,24 @@ def fill_update(request,pk):#bin  # sourcery skip: extract-method, move-assign
 
 def m(request):
     return render(request, 'user.html')
+
+def camera_test(request):
+    return render(request, 'camera_test.html')
+
+
+def upload_camera_v(request):  
+    if request.method == 'POST':
+        location_name = request.POST.get('name')
+        loc_lat = request.POST.get('latitude')
+        loc_lng = request.POST.get('longitude')
+        locimage = request.FILES.get('image')
+        
+        # Create and save instance of camera_vision model
+        camera_vision.objects.create(
+            location_name=location_name,
+            loc_lat=loc_lng,
+            loc_lng=loc_lat,
+            locimage=locimage
+        )
+        return redirect('camera_vision')
+    return render(request, 'upload_camera_v.html')

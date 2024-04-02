@@ -21,4 +21,6 @@ urlpatterns = [
     path("filldetails/", views.distance, name="ultrasonic"),
     path("update_filldata/<str:pk>/", views.fill_update, name="update_filldata"),
     path("tracking/", views.m, name="tracking"),
+    path("camera_test", views.camera_test, name="camera_test"),
+    path("upload_camera_v/", views.upload_camera_v, name="upload_camera_v"),
 ]

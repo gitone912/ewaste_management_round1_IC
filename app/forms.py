@@ -59,3 +59,4 @@ class arduino_status(forms.ModelForm):
         model = arduino
         fields = ['check_filled']
         
+

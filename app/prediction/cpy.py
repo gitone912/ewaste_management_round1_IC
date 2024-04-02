@@ -5,10 +5,10 @@ import os
 # Create variables for your project
 def get_image(a):
     publish_iteration_name = "Iteration1"
-    project_id = "9e7820ba-5b71-4b2c-b5b7-aba3feeca08b"
+    project_id = "697f508c-5326-4bdc-a6b2-ef7223ada2ce"
     # Create variables for your prediction resource
-    prediction_key = "421309d49a0b4b2a90560b008ad1ece4"
-    endpoint = "https://centralindia.api.cognitive.microsoft.com/"
+    prediction_key = "c772308225124734a5cd99a24d10d3dc"
+    endpoint = "https://southcentralus.api.cognitive.microsoft.com/"
     prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
     predictor = CustomVisionPredictionClient(endpoint, prediction_credentials)
     # Open an image and make a prediction
@@ -19,4 +19,4 @@ def get_image(a):
     # for prediction in results.predictions:
     #     print(f"{prediction.tag_name}: {prediction.probability * 100 :.2f}%")
     print(f"result : {results.predictions[0].tag_name} {results.predictions[0].probability * 100 :.2f}%")
-    return 1 if results.predictions[0].tag_name == "garbage" else 0
+    return 1 if results.predictions[0].tag_name == "Waste" else 0

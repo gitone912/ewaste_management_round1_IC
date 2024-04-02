@@ -30,17 +30,10 @@
   {% endfor %}
 </div>
 <br />
-<h4><a href="{% url 'cvmap' %}" class="btn btn-info">proceed to maps</a></h4>
+
 <div class="col-md-4">
-  <div class="form-group">
-    <label>Fill out the data</label>
-    <form action="" method="POST" enctype="multipart/form-data">
-      {% csrf_token %} 
-      {{ form.as_p }}
-      <input type="submit"value="Submit"class="btn btn-info btn-fill pull-right"/>
-    </form>
-    <br />
-  </div>
+  <h4><a href="{% url 'cvmap' %}" class="btn btn-info">proceed to maps</a></h4>
+  <h4><a href="{% url 'upload_camera_v' %}" class="btn btn-info">Upload through camera</a></h4>
 </div>
 <br />
 {% endblock body %}
