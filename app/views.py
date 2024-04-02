@@ -217,13 +217,16 @@ def upload_camera_v(request):
         loc_lat = request.POST.get('latitude')
         loc_lng = request.POST.get('longitude')
         locimage = request.FILES.get('image')
-        
-        # Create and save instance of camera_vision model
-        camera_vision.objects.create(
-            location_name=location_name,
-            loc_lat=loc_lng,
-            loc_lng=loc_lat,
-            locimage=locimage
-        )
-        return redirect('camera_vision')
+        print(locimage)
+        image = cpy.get_image(locimage)
+        print(image)
+        if image == 1: 
+            camera_vision.objects.create(
+                location_name=location_name,
+                loc_lat=loc_lng,
+                loc_lng=loc_lat,
+                locimage=locimage
+            )
+            return redirect('camera_vision')
+        return HttpResponse("not a waste")
     return render(request, 'upload_camera_v.html')

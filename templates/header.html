@@ -15,11 +15,12 @@
             <a href="{% url 'new_bins' %}" class="nav-item nav-link">Bins</a>
             <a href="{% url 'tracking' %}" class="nav-item nav-link">Tracking</a>
             <a href="{% url 'ultrasonic' %}" class="nav-item nav-link">Fill %</a>
+            <a href="{% url 'camera_test' %}" class="nav-item nav-link">model</a>
             {% else %}
             <a href="{% url 'login' %}" class="nav-item nav-link active">Login</a>
             <a href="{% url 'register' %}" class="nav-item nav-link">Register</a>
             {% endif %}
-            
+
         </div>
     </div>
 
