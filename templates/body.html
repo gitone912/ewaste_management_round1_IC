@@ -1,16 +1,144 @@
 {% extends 'home.html' %}
 {% block body %}
+<style>
+    .service-item {
+            position: relative;
+            border: 2px solid black;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+    }
+
+    .service-item:hover {
+            border-color: blue; 
+            background-color: blue; 
+    }
+
+    .service-item:hover .popup-box {
+            display: block; /* Show popup box on hover */
+        }
+
+    .popup-box {
+        
+        position: absolute;
+        top: -20px;
+        left: 110%;
+        transform: translateX(-50%);
+        color: black; 
+        background-color: blue; 
+        padding: 5px 10px;
+        border-radius: 5px;
+        
+        display: none; 
+        z-index: 999;
+    }
+
+    .service-item:hover .popup-box {
+            display: block; /* Show popup box on hover */
+            color: white; /* Change text color on hover */
+        }
+
+        
+        /* Adjust typography */
+        body {
+            font-family: 'Arial', sans-serif; /* Change font family */
+            font-size: 16px; /* Set base font size */
+            line-height: 1.6; /* Set line height */
+            color: #333;
+             
+        }
+
+        h1, h6 {
+            font-weight: bold; /* Set font weight */
+            text-transform: uppercase; /* Uppercase headings */
+            letter-spacing: 1px; /* Add letter spacing */
+            margin-bottom: 20px; /* Add margin below headings */
+        }
+
+        h1 {
+            font-size: 2.5rem; /* Increase font size for main headings */
+        }
+
+        h6 {
+            font-size: 1rem; /* Decrease font size for subheadings */
+        }
+
+        /* Styling for product items */
+        .product-item {
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* Hide overflowing content */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px); /* Move up slightly on hover */
+        }
+
+        .product-item img {
+            max-width: 100%; /* Ensure images don't exceed container width */
+        }
+
+        .product-item h6 {
+            font-size: 1.2rem; /* Adjust font size */
+            margin-top: 15px; /* Add space above heading */
+        }
+        .team-item {
+            background-color: #fff; /* Set background color */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+            margin-bottom: 30px; /* Add bottom margin */
+        }
+
+        .team-item:hover {
+            transform: translateY(-5px); /* Move up slightly on hover */
+        }
+
+        .team-item img {
+            max-width: 100%; /* Ensure images don't exceed container width */
+            border-top-left-radius: 10px; /* Round top-left corner of images */
+            border-top-right-radius: 10px; /* Round top-right corner of images */
+        }
+
+        .team-item .bg-light {
+            padding: 20px; /* Add padding inside bg-light div */
+            border-bottom-left-radius: 10px; /* Round bottom-left corner of bg-light div */
+            border-bottom-right-radius: 10px; /* Round bottom-right corner of bg-light div */
+        }
+
+        .team-item h5 {
+            font-size: 1.5rem; /* Increase font size for team member names */
+            margin-bottom: 10px; /* Add bottom margin to team member names */
+            color: #333; /* Set text color */
+        }
+
+        .team-item p {
+            font-size: 1rem; /* Set font size for team member descriptions */
+            color: #666; /* Set text color */
+        }
+
+        .team-item .btn {
+            color: #333; /* Set button text color */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Add transition effect */
+        }
+
+        .team-item .btn:hover {
+            background-color: #333; /* Change background color on hover */
+            color: #fff; /* Change text color on hover */
+        }
+</style>
 <body>
     <!-- Hero Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container-fluid bg-primary py-5 mb-5 hero-header" style="background-image: url('https://i.pinimg.com/originals/ea/2e/35/ea2e352dcf6dcf4970bb1da393fdf130.gif');">
         <div class="container py-5">
             <div class="row justify-content-start">
                 <div class="col-lg-8 text-center text-lg-start">
-                    <h1 class="display-1 text-uppercase text-white mb-lg-7" color='red'>waste_management</h1>
-                    <h1 class="text-uppercase text-white mb-lg-4">Make Your City Clean</h1>
-                    <p class="fs-4 text-white mb-lg-4">We Team Binks are here with a awsome project on Waste Management , using AI Ml IoT and Maps technology
-                        "we are still in our development phase"
-                    </p>
+                    <h2 class="display-1 text-uppercase text-red mb-lg-7" style="color: hwb(126 2% 32%); font-size: 4rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">GreenRoute</h2>
+                    <h2 class="text-uppercase text-white mb-lg-4" style="color: black; font-size: 2.5rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Make Your City Clean 
+                        (Waste Collection Optimization)</h2>
+
+                        <p class="fs-0.8 text-black mb-lg-4" style="font-weight: bold;">Hey there! Check out our cool new website, GreenRoute! It's all about making garbage collection super smart. We use fancy tech like IoT sensors and computer vision to figure out where the trash is and how much there is. And guess what? We show all that info right on the driver's screen so they can take the best routes. No more wandering around aimlessly – just efficient, hassle-free waste collection. Say hello to a cleaner neighborhood with GreenRoute!</p>
+
                     <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                         <a href="" class="btn btn-outline-light border-2 py-md-3 px-md-5 me-5">Our Presentation</a>
                         <button type="button" class="btn-play" data-bs-toggle="modal"
@@ -51,17 +179,18 @@
         <div class="container">
             <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
                 <h6 class="text-primary text-uppercase">Services</h6>
-                <h1 class="display-5 text-uppercase mb-0">Our Excellent City Cleaning Services</h1>
+                <h1 class="display-5 text-uppercase mb-0"  style="color: hwb(126 2% 32%);">Our Excellent City Cleaning Services</h1>
             </div>
             <div class="row g-5">
                 <div class="col-md-6">
-                    <div class="service-item bg-light d-flex p-4">
+                    <div class="service-item bg-light d-flex p-4" style="position: relative;">
                         {% comment %} <i class="flaticon-house display-1 text-primary me-4"></i> {% endcomment %}
                         <div>
                             <h5 class="text-uppercase mb-3">Computer Vision</h5>
-                            <p>we are using computer vision technology through ComputerVision.ai of Microsoft azure , this model spots street garbage and after indentifying the garbage coordinates send up to azure maps</p>
+                            <p>we are using computer vision technology through ComputerVision.ai of Microsoft azure , this model spots street garbage and after identifying the garbage coordinates send them up to azure maps</p>
                             <a class="text-primary text-uppercase" href="">Read More<i class="bi bi-chevron-right"></i></a>
                         </div>
+                        <div class="popup-box">Computer Vision Service</div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -69,9 +198,10 @@
                         <i class=""></i>
                         <div>
                             <h5 class="text-uppercase mb-3">IoT Bins</h5>
-                            <p>We introduced a special type of Iot device which Fits in any type of bins and inform the admin whenever the garbage gets full , we are using Azure Maps and Azure IoT service in it</p>
+                            <p>We introduced a special type of Iot device which fits in any type of bins and inform the admin whenever the garbage gets full , we are using Azure Maps and Azure IoT service in it</p>
                             <a class="text-primary text-uppercase" href="">Read More<i class="bi bi-chevron-right"></i></a>
                         </div>
+                        <div class="popup-box">IOT Bins</div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -79,9 +209,10 @@
                         <i class=""></i>
                         <div>
                             <h5 class="text-uppercase mb-3">Maps technology</h5>
-                            <p>we are using Azure maps models and functions effectively to improve and make driver's or field staff garbage collectors work easy</p>
+                            <p>we are using Azure maps models and functions effectively to improve and make driver's or field staff garbage collector's work easy</p>
                             <a class="text-primary text-uppercase" href="">Read More<i class="bi bi-chevron-right"></i></a>
                         </div>
+                        <div class="popup-box">Map technology</div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -89,9 +220,10 @@
                         <i class=""></i>
                         <div>
                             <h5 class="text-uppercase mb-3">Route Optimization</h5>
-                            <p>All the coordinates which ll be send upto Maps can be optimise by user by clicking a single button, we used azure maps java script algorithm to optimize routes of coordinates</p>
+                            <p>All the coordinates which will be send upto Maps can be optimised by user by clicking a single button, we used azure maps java script algorithm to optimize routes of coordinates</p>
                             <a class="text-primary text-uppercase" href="">Read More<i class="bi bi-chevron-right"></i></a>
                         </div>
+                        <div class="popup-box">Route Optimization</div>
                     </div>
                 </div>
             </div>
@@ -104,31 +236,31 @@
         <div class="container">
             <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
                 <h6 class="text-primary text-uppercase">DOs</h6>
-                <h1 class="display-5 text-uppercase mb-0">what we doing</h1>
+                <h1 class="display-5 text-uppercase mb-0"  style="color: hwb(126 2% 32%);">What We're Doing</h1>
             </div>
             <div class="owl-carousel product-carousel">
                 <div class="pb-5">
                     <div class="product-item position-relative bg-light d-flex flex-column text-center">
                         <img class="img-fluid mb-4" src="https://i.ibb.co/52SxQJF/camera1.jpg" alt="">
-                        <h6 class="text-uppercase">use of street cameras for garbage detection</h6>
+                        <h6 class="text-uppercase">Using of Street Cameras for Garbage Detection</h6>
                     </div>
                 </div>
                 <div class="pb-5">
                     <div class="product-item position-relative bg-light d-flex flex-column text-center">
                         <img class="img-fluid mb-4" src="https://i.ibb.co/f9mR339/filling-read.jpg" alt="">
-                        <h6 class="text-uppercase">using IoT device integrated bins for garbage collection</h6>
+                        <h6 class="text-uppercase">Using IoT Device Integrated Bins for Garbage Collection</h6>
                     </div>
                 </div>
                 <div class="pb-5">
                     <div class="product-item position-relative bg-light d-flex flex-column text-center">
                         <img class="img-fluid mb-4" src="https://i.ibb.co/kVnnDj3/map.jpg" alt="">
-                        <h6 class="text-uppercase">Optimizing route and map for collection of garbage from spotted spots and bins</h6>
+                        <h6 class="text-uppercase">Optimizing Route and Map for Collection of Garbage</h6>
                     </div>
                 </div>
                 <div class="pb-5">
                     <div class="product-item position-relative bg-light d-flex flex-column text-center">
                         <img class="img-fluid mb-4" src="https://i.ibb.co/VJbfNjZ/ai.webp" alt="">
-                        <h6 class="text-uppercase">Using AI and ML technological</h6>
+                        <h6 class="text-uppercase">Using AI and ML Technologies to increase the functionality</h6>
                     </div>
                 </div>
             </div>
@@ -142,7 +274,7 @@
         <div class="container">
             <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
                 <h6 class="text-primary text-uppercase">Team Members</h6>
-                <h1 class="display-5 text-uppercase mb-0">We all are Students persuing Graduation in India</h1>
+                <h1 class="display-5 text-uppercase mb-0"style="color: hwb(126 2% 32%);">Team Codex</h1>
             </div>
             <div class="owl-carousel team-carousel position-relative" style="padding-right: 25px;">
                 <div class="team-item">
@@ -158,12 +290,13 @@
                     </div>
                     <div class="bg-light text-center p-4">
                         <h5 class="text-uppercase">Akash Verma</h5>
-                        <p class="m-0">I am a Django Backend Developer, currently persuing Bachelors of Computer Applications from ICFAI University in India ,</p>
+                        <p class="m-0">I am a Django Backend Developer, currently persuing Bachelors of Computer Applications from ICFAI University in India </p>
                     </div>
                 </div>
+                
                 <div class="team-item">
                     <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="" alt="">
+                         
                         <div class="team-overlay">
                             <div class="d-flex align-items-center justify-content-start">
                                 <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-twitter"></i></a>
@@ -173,42 +306,11 @@
                         </div>
                     </div>
                     <div class="bg-light text-center p-4">
-                        <h5 class="text-uppercase">name</h5>
-                        <p class="m-0">I am a FrontEnd developer ,currently persuing Bachelors in Computer Science and Engineering from  University in India </p>
+                        <h5 class="text-uppercase">Rajnandini Tiwari</h5>
+                        <p class="m-0">Hi, I'm a frontend and AI developer and I had a great time making this webapp. I am currently persuing Bachelors of computer Application in Data Science & Artificial Intelligence</p>
                     </div>
                 </div>
-                <div class="team-item">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
-                        <div class="team-overlay">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-twitter"></i></a>
-                                <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-facebook"></i></a>
-                                <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light text-center p-4">
-                        <h5 class="text-uppercase">suraj lal</h5>
-                        <p class="m-0">I am a App developer, currently persuing Bachelors of Computer Applications from ICFAI University in India</p>
-                    </div>
-                </div>
-                <div class="team-item">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="" alt="">
-                        <div class="team-overlay">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-twitter"></i></a>
-                                <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-facebook"></i></a>
-                                <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light text-center p-4">
-                        <h5 class="text-uppercase">nill</h5>
-                        <p class="m-0">we still are searching for our fourth member </p>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -223,16 +325,15 @@
                     <div class="owl-carousel testimonial-carousel bg-white p-5">
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-4">
-                                <img class="img-fluid mx-auto" src="https://i.ibb.co/h9vX2yp/download.png" alt="">
+                                <img class="img" src="https://th.bing.com/th/id/OIP.zBJaXzbXhT4mLz9gvAfkQwHaH5?w=185&h=198&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
                                 <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style="width: 45px; height: 45px;">
                                 </div>
                             </div>
-                            <p>we are team blinks from india , due to lack of time we unabled to put IoT devices on our project
-                                we are looking forward for semi finals are with a complete version or our waste management system
+                            <p>We are team Codex from Ranchi , presenting GreenRoute which revolutionizes waste management by employing IoT and computer vision technologies to optimize garbage collection routes. Its implementation promises to significantly reduce resource wastage and environmental pollution, offering a sustainable solution for efficient city cleaning. 
                             </p>
                             <hr class="w-25 mx-auto">
-                            <h5 class="text-uppercase">Team Blinks</h5>
-                            <span>project for Imagine Cup Round one from India</span>
+                            <h5 class="text-uppercase">Team Codex</h5>
+                            <span>Project for Hack With India</span>
                             <hr class="w-25 mx-auto">
                             <a href="{% url 'logout' %}"><h5 class="text-uppercase">LogOut</h5></a>
                         </div>
